@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-02-28T04:58:22.083Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="_zqBgg5FqoM4zg0XeAq3" version="20.8.23" type="github">
+<mxfile host="app.diagrams.net" modified="2023-02-28T05:02:06.135Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36" etag="YgGWSerW7r8j1C_Bl7tf" version="20.8.23" type="github">
   <diagram name="Страница 1" id="Bg6F_eg1BQB0qyp61wwv">
-    <mxGraphModel dx="1383" dy="754" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1803" dy="983" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -80,7 +80,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="k5xjA4PLT7-g8IIi1C31-46" value="star" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" parent="1" vertex="1">
-          <mxGeometry x="30" y="390" width="160" height="104" as="geometry" />
+          <mxGeometry x="30" y="390" width="160" height="130" as="geometry" />
         </mxCell>
         <mxCell id="k5xjA4PLT7-g8IIi1C31-50" value="- id: uuid" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="k5xjA4PLT7-g8IIi1C31-46" vertex="1">
           <mxGeometry y="26" width="160" height="26" as="geometry" />
@@ -90,6 +90,9 @@
         </mxCell>
         <mxCell id="k5xjA4PLT7-g8IIi1C31-51" value="- star_collection_id: uuid" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="k5xjA4PLT7-g8IIi1C31-46" vertex="1">
           <mxGeometry y="78" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="niIvJYFqWhiyla7VrMUE-2" value="- created_at: datetime&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="k5xjA4PLT7-g8IIi1C31-46">
+          <mxGeometry y="104" width="160" height="26" as="geometry" />
         </mxCell>
         <mxCell id="k5xjA4PLT7-g8IIi1C31-55" value="Andrei God" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" parent="1" vertex="1">
           <mxGeometry x="650" y="530" width="30" height="60" as="geometry" />
