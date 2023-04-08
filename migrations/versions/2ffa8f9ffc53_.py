@@ -1,4 +1,4 @@
-"""empty message
+"""populate planets
 
 Revision ID: 2ffa8f9ffc53
 Revises: eae5d300641d

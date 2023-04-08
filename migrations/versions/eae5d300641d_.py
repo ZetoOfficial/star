@@ -1,4 +1,4 @@
-"""empty message
+"""populate universe, galaxy, constellation and star
 
 Revision ID: eae5d300641d
 Revises: 90eed17af1b5
