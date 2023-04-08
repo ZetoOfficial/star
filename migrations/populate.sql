@@ -23,3 +23,14 @@ VALUES
     ('c54ba042-0c11-4b0e-9d9b-c5f5c5b5d86c'::uuid, 'Alpha Centauri A', '8d4a54a4-4c11-4db5-a8a5-86e55a124f61'::uuid, 'G2V', 1.1, 4.37, 5790),
     ('76a2a29a-af8c-4617-bb57-0d79b1319d04'::uuid, 'Alpha Centauri B', '8d4a54a4-4c11-4db5-a8a5-86e55a124f61'::uuid, 'K1V', 0.907, 4.37, 5260),
     ('af14baab-2e2b-4a12-a9f9-007aa0a0e64e'::uuid, 'Barnards Star', '8d4a54a4-4c11-4db5-a8a5-86e55a124f61'::uuid, 'M4Ve', 0.0004, 5.96, 3134);
+
+INSERT INTO planet (id, name, mass, diameter, distance_from_star, orbital_period, surface_temperature, star_id)
+VALUES
+('1d4cc4af-4c08-4283-aa18-74b48a2b19c3'::uuid, 'Mercury', 0.330, 4879, 0.39, '87.97 days'::interval, 340, 'cc98dce8-afec-4d5c-b027-3a3a3a3a3a3a'::uuid),
+('68ef44cf-dc0e-44a4-9d84-d023768787a4'::uuid, 'Venus', 4.87, 12104, 0.72, '224.7 days'::interval, 737, 'cc98dce8-afec-4d5c-b027-3a3a3a3a3a3a'::uuid),
+('d9e9e1d1-003c-49ec-a619-4f29a372aeb6'::uuid, 'Earth', 5.97, 12756, 1.00, '365.25 days'::interval, 288, 'cc98dce8-afec-4d5c-b027-3a3a3a3a3a3a'::uuid),
+('7a8d5c5a-05c3-40b2-8d01-b6c853ed07aa'::uuid, 'Mars', 0.642, 6792, 1.52, '1.88 years'::interval, -63, 'cc98dce8-afec-4d5c-b027-3a3a3a3a3a3a'::uuid),
+('05886f56-c95e-4063-a7e3-ae3dc1a7f3bb'::uuid, 'Proxima Centauri b', 0.003, 11385, 0.0485, '11.2 days'::interval, -39, 'f6a51829-9e2f-4c5f-a1c7-7115d8bda7fc'::uuid),
+('2c5c1e29-4cf0-4f01-88a4-7284e9b3fbcd'::uuid, 'Alpha Centauri Bb', 1.133, 15000, 0.04, '3.24 days'::interval, 1500, '76a2a29a-af8c-4617-bb57-0d79b1319d04'::uuid),
+('d82f43c3-3d90-4017-a1e3-0570a9d2f848'::uuid, 'Tartarus', 0.007, 2453, 0.23, '0.39 years'::interval, 1273, 'c54ba042-0c11-4b0e-9d9b-c5f5c5b5d86c'::uuid);
+ 
