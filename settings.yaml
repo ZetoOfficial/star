@@ -1,0 +1,11 @@
+app:
+  endpoint: "/api"
+  environment: dev
+  origins:
+    - "*"
+postgres:
+  user: postgres
+  password: postgres
+  database: database
+  host: 127.0.0.1
+  port: 5432

@@ -5,7 +5,6 @@ CREATE TABLE alembic_version (
     CONSTRAINT alembic_version_pkc PRIMARY KEY (version_num)
 );
 
-INFO  [alembic.runtime.migration] Running upgrade  -> 90eed17af1b5, empty message
 -- Running upgrade  -> 90eed17af1b5
 
 CREATE TABLE universe (
@@ -75,3 +74,42 @@ CREATE TABLE star_constellation (
 INSERT INTO alembic_version (version_num) VALUES ('90eed17af1b5') RETURNING alembic_version.version_num;
 
 COMMIT;
+
+CREATE OR REPLACE FUNCTION count_constellations() RETURNS INTEGER AS $$
+DECLARE
+    count INTEGER;
+BEGIN
+    SELECT COUNT(*) INTO count FROM constellation;
+    RETURN count;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_planets_by_star(star_id UUID) RETURNS SETOF planet AS $$
+BEGIN
+    RETURN QUERY SELECT * FROM planet WHERE planet.star_id = get_planets_by_star.star_id;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION get_star_by_name(name VARCHAR, OUT id UUID, OUT spectral_type VARCHAR, OUT luminosity FLOAT) AS $$
+BEGIN
+    SELECT star.id, star.spectral_type, star.luminosity INTO id, spectral_type, luminosity FROM star WHERE star.name = get_star_by_name.name;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER add_star_trigger
+AFTER INSERT ON star
+FOR EACH ROW
+BEGIN
+    IF EXISTS (SELECT 1 FROM star_constellation WHERE star_id = NEW.id) THEN
+        INSERT INTO star_constellation (star_id, constellation_id) VALUES (NEW.id, NEW.constellation_id);
+    END IF;
+END;
+
+CREATE TRIGGER add_universe_trigger
+AFTER INSERT ON universe
+FOR EACH ROW
+BEGIN
+  RAISE NOTICE 'universe';
+  RETURN NEW;
+END;

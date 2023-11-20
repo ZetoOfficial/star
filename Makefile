@@ -9,3 +9,6 @@ down:
 
 ps:
 	$(COMPOSE) ps
+
+migrate:
+	alembic upgrade head
