@@ -4,7 +4,7 @@ from sqlalchemy import Column, Float, ForeignKey, String, Time
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 
-from . import Base
+from app.database import Base
 
 
 class Planet(Base):
@@ -19,4 +19,4 @@ class Planet(Base):
     surface_temperature = Column(Float)
     star_id = Column(UUID(as_uuid=True), ForeignKey('star.id'))
 
-    star = relationship('Star', backref='planet')
+    star = relationship('Star', back_populates='planet')

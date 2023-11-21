@@ -17,7 +17,7 @@ class CRUDUniverse:
             orm_obj = ORMUniverse(**dto.model_dump())
             session.add(orm_obj)
             await session.commit()
-        return UniverseDTO.model_validate(orm_obj)
+        return orm_obj
 
     @staticmethod
     async def get_all_universes(limit: int = None, offset: int = None) -> list[UniverseDTO]:
@@ -30,7 +30,7 @@ class CRUDUniverse:
                 query = query.offset(offset)
             result = await session.execute(query)
             universes = result.scalars().all()
-        return [UniverseDTO.model_validate(universe) for universe in universes]
+        return universes
 
     @staticmethod
     async def get_universe_by_id(universe_id: UUID) -> UniverseDTO:
@@ -41,7 +41,7 @@ class CRUDUniverse:
             universe = result.scalar_one_or_none()
             if universe is None:
                 raise NotFoundException("Universe not found")
-        return UniverseDTO.model_validate(universe)
+        return universe
 
     @staticmethod
     async def update_universe(universe_id: UUID, dto: InputUniverseDTO) -> UniverseDTO:
@@ -56,7 +56,7 @@ class CRUDUniverse:
             result = await session.execute(query)
             await session.commit()
             universe = result.one()
-        return UniverseDTO.model_validate(universe)
+        return universe
 
     @staticmethod
     async def delete_universe(universe_id: UUID) -> None:

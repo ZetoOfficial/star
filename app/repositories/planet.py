@@ -18,7 +18,7 @@ class CRUDPlanet:
             orm_obj = ORMPlanet(**dto.model_dump())
             session.add(orm_obj)
             await session.commit()
-        return PlanetDTO.model_validate(orm_obj)
+        return orm_obj
 
     @staticmethod
     async def get_all_planets(limit: int = None, offset: int = None) -> list[PlanetDTO]:
@@ -31,7 +31,7 @@ class CRUDPlanet:
                 query = query.offset(offset)
             result = await session.execute(query)
             planets = result.scalars().all()
-        return [PlanetDTO.model_validate(planet) for planet in planets]
+        return planets
 
     @staticmethod
     async def get_planet_by_id(planet_id: UUID) -> PlanetDTO:
@@ -42,7 +42,7 @@ class CRUDPlanet:
             planet = result.scalar_one_or_none()
             if planet is None:
                 return NotFoundException("Planet not found")
-        return PlanetDTO.model_validate(planet)
+        return planet
 
     @staticmethod
     async def update_planet(planet_id: UUID, dto: InputPlanetDTO) -> PlanetDTO:
@@ -57,7 +57,7 @@ class CRUDPlanet:
             result = await session.execute(query)
             await session.commit()
             planet = result.one()
-        return PlanetDTO.model_validate(planet)
+        return planet
 
     @staticmethod
     async def delete_planet(planet_id: UUID) -> None:

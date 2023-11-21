@@ -4,8 +4,8 @@ app:
   origins:
     - "*"
 postgres:
-  user: postgres
-  password: postgres
-  database: database
-  host: 127.0.0.1
+  user: star
+  password: star
+  database: star
+  host: localhost
   port: 5432

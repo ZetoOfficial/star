@@ -18,7 +18,7 @@ class CRUDStarConstellation:
             orm_obj = ORMStarConstellation(**dto.model_dump())
             session.add(orm_obj)
             await session.commit()
-        return StarConstellationDTO.model_validate(orm_obj)
+        return orm_obj
 
     @staticmethod
     async def get_star_constellation(star_id: UUID, constellation_id: UUID) -> StarConstellationDTO:
@@ -31,7 +31,7 @@ class CRUDStarConstellation:
             star_constellation = result.scalar_one_or_none()
             if star_constellation is None:
                 raise NotFoundException("StarConstellation not found")
-        return StarConstellationDTO.model_validate(star_constellation)
+        return star_constellation
 
     @staticmethod
     async def delete_star_constellation(star_id: UUID, constellation_id: UUID) -> None:

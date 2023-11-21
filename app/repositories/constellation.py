@@ -1,8 +1,11 @@
 from sqlalchemy import delete, select, update
+from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import SessionLocal
 from app.models.constellation import Constellation as ORMConstellation
+from app.models.galaxy import Galaxy as ORMGalaxy
+from app.models.star_constellation import StarConstellation as ORMStarConstellation
 from app.schemas import ConstellationDTO, InputConstellationDTO
 
 from .errors import NotFoundException
@@ -16,7 +19,7 @@ class CRUDConstellation:
             orm_obj = ORMConstellation(**dto.model_dump())
             session.add(orm_obj)
             await session.commit()
-        return ConstellationDTO.model_validate(orm_obj)
+        return orm_obj
 
     @staticmethod
     async def get_all_constellations(limit: int, offset: int) -> list[ConstellationDTO]:
@@ -27,8 +30,10 @@ class CRUDConstellation:
                 query = query.limit(limit)
             if offset:
                 query = query.offset(offset)
+            query = query.options(selectinload(ORMConstellation.galaxy))
+            query = query.options(selectinload(ORMConstellation.star_constellation))
             result = await session.execute(query)
-        return [ConstellationDTO.model_validate(constellation) for constellation in result.scalars().all()]
+        return result.scalars().all()
 
     @staticmethod
     async def get_constellation_by_id(_id: int) -> ConstellationDTO:
@@ -38,7 +43,7 @@ class CRUDConstellation:
             result = await session.execute(query)
             if result is None:
                 return NotFoundException(f"Constellation with id {_id} not found")
-        return ConstellationDTO.model_validate(result.scalar_one())
+        return result.scalar_one()
 
     @staticmethod
     async def update_constellation(_id: int, dto: InputConstellationDTO) -> ConstellationDTO:
@@ -52,7 +57,7 @@ class CRUDConstellation:
             )
             result = await session.execute(query)
             await session.commit()
-        return ConstellationDTO.model_validate(result.scalar_one())
+        return result.scalar_one()
 
     @staticmethod
     async def delete_constellation(_id: int) -> bool:

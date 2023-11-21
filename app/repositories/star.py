@@ -18,7 +18,7 @@ class CRUDStar:
             orm_obj = ORMStar(**dto.model_dump())
             session.add(orm_obj)
             await session.commit()
-        return StarDTO.model_validate(orm_obj)
+        return orm_obj
 
     @staticmethod
     async def get_all_stars(limit: int = None, offset: int = None) -> list[StarDTO]:
@@ -31,7 +31,7 @@ class CRUDStar:
                 query = query.offset(offset)
             result = await session.execute(query)
             stars = result.scalars().all()
-        return [StarDTO.model_validate(star) for star in stars]
+        return stars
 
     @staticmethod
     async def get_star_by_id(star_id: UUID) -> StarDTO:
@@ -42,7 +42,7 @@ class CRUDStar:
             star = result.scalar_one_or_none()
             if star is None:
                 return NotFoundException("Star not found")
-        return StarDTO.model_validate(star)
+        return star
 
     @staticmethod
     async def update_star(star_id: UUID, dto: InputStarDTO) -> StarDTO:
@@ -57,7 +57,7 @@ class CRUDStar:
             result = await session.execute(query)
             await session.commit()
             star = result.one()
-        return StarDTO.model_validate(star)
+        return star
 
     @staticmethod
     async def delete_star(star_id: UUID) -> None:

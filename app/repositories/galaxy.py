@@ -1,6 +1,7 @@
 from uuid import UUID
 
 from sqlalchemy import delete, select, update
+from sqlalchemy.orm import selectinload
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import SessionLocal
@@ -18,7 +19,7 @@ class CRUDGalaxy:
             orm_obj = ORMGalaxy(**dto.model_dump())
             session.add(orm_obj)
             await session.commit()
-        return GalaxyDTO.model_validate(orm_obj)
+        return orm_obj
 
     @staticmethod
     async def get_all_galaxies(limit: int = None, offset: int = None) -> list[GalaxyDTO]:
@@ -31,7 +32,7 @@ class CRUDGalaxy:
                 query = query.offset(offset)
             result = await session.execute(query)
             galaxies = result.scalars().all()
-        return [GalaxyDTO.model_validate(galaxy) for galaxy in galaxies]
+        return galaxies
 
     @staticmethod
     async def get_galaxy_by_id(galaxy_id: UUID) -> GalaxyDTO:
@@ -42,7 +43,7 @@ class CRUDGalaxy:
             galaxy = result.scalar_one_or_none()
             if galaxy is None:
                 return NotFoundException("Galaxy not found")
-        return GalaxyDTO.model_validate(galaxy)
+        return galaxy
 
     @staticmethod
     async def update_galaxy(galaxy_id: UUID, dto: InputGalaxyDTO) -> GalaxyDTO:
@@ -57,7 +58,7 @@ class CRUDGalaxy:
             result = await session.execute(query)
             await session.commit()
             galaxy = result.one()
-        return GalaxyDTO.model_validate(galaxy)
+        return galaxy
 
     @staticmethod
     async def delete_galaxy(galaxy_id: UUID) -> None:

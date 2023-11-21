@@ -4,7 +4,7 @@ from sqlalchemy import Column, Float, String, Text
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 
-from . import Base
+from app.database import Base
 
 
 class Universe(Base):
