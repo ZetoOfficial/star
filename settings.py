@@ -5,6 +5,8 @@ from pydantic import BaseModel
 from pydantic_settings import BaseSettings
 from yaml import safe_load
 
+from typing import Union
+
 CONFIG_FILE = str(Path(__file__).parent.absolute()) + "/settings.yaml"
 LOGFILE_FILE = str(Path(__file__).parent.absolute()) + "/star.log"
 basicConfig(
@@ -33,7 +35,7 @@ class Settings(BaseSettings):
     postgres: Postgres
 
 
-def load_settings(path: Path | str = CONFIG_FILE) -> Settings:
+def load_settings(path: Union[Path, str] = CONFIG_FILE) -> Settings:
     if isinstance(path, str):
         path = Path(path)
     with path.open() as f:
