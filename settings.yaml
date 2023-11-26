@@ -1,6 +1,6 @@
 app:
   endpoint: "/api"
-  environment: dev
+  environment: prod
   origins:
     - "*"
 postgres:

@@ -3,6 +3,11 @@ from pydantic import BaseModel, UUID4
 from typing import Optional
 
 
+class StarShortDTO(BaseModel):
+    id: UUID4
+    name: str
+
+
 class PlanetDTO(BaseModel):
     id: UUID4
     name: str
@@ -11,7 +16,7 @@ class PlanetDTO(BaseModel):
     distance_from_star: float
     orbital_period: Optional[time]
     surface_temperature: Optional[float]
-    star_id: UUID4
+    star: StarShortDTO
 
 
 class InputPlanetDTO(BaseModel):

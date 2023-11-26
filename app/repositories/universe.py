@@ -17,10 +17,12 @@ class CRUDUniverse:
             orm_obj = ORMUniverse(**dto.model_dump())
             session.add(orm_obj)
             await session.commit()
-        return orm_obj
+            return orm_obj
 
     @staticmethod
-    async def get_all_universes(limit: int = None, offset: int = None) -> list[UniverseDTO]:
+    async def get_all_universes(
+        limit: int = None, offset: int = None
+    ) -> list[UniverseDTO]:
         async with SessionLocal() as session:
             session: AsyncSession
             query = select(ORMUniverse)
@@ -53,10 +55,9 @@ class CRUDUniverse:
                 .values(**dto.model_dump())
                 .returning(ORMUniverse)
             )
-            result = await session.execute(query)
+            await session.execute(query)
             await session.commit()
-            universe = result.one()
-        return universe
+            return await CRUDUniverse.get_universe_by_id(universe_id)
 
     @staticmethod
     async def delete_universe(universe_id: UUID) -> None:

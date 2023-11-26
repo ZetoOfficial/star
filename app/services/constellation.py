@@ -10,9 +10,10 @@ class ConstellationService:
         return await CRUDConstellation.create_constellation(dto)
 
     @staticmethod
-    async def get_all_constellations(limit: int = None, offset: int = None) -> list[ConstellationDTO]:
+    async def get_all_constellations(
+        limit: int = None, offset: int = None
+    ) -> list[ConstellationDTO]:
         result = await CRUDConstellation.get_all_constellations(limit, offset)
-        print(result)
         return result
 
     @staticmethod
@@ -20,7 +21,9 @@ class ConstellationService:
         return await CRUDConstellation.get_constellation_by_id(galaxy_id)
 
     @staticmethod
-    async def update_constellation(galaxy_id: UUID, dto: InputConstellationDTO) -> ConstellationDTO:
+    async def update_constellation(
+        galaxy_id: UUID, dto: InputConstellationDTO
+    ) -> ConstellationDTO:
         return await CRUDConstellation.update_constellation(galaxy_id, dto)
 
     @staticmethod

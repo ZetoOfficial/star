@@ -1,4 +1,3 @@
-from logging import DEBUG, FileHandler, StreamHandler, basicConfig
 from pathlib import Path
 
 from pydantic import BaseModel
@@ -8,12 +7,6 @@ from yaml import safe_load
 from typing import Union
 
 CONFIG_FILE = str(Path(__file__).parent.absolute()) + "/settings.yaml"
-LOGFILE_FILE = str(Path(__file__).parent.absolute()) + "/star.log"
-basicConfig(
-    level=DEBUG,
-    format="[%(asctime)s] [%(levelname)s] [%(name)s] [%(funcName)s():%(lineno)s] %(message)s",
-    handlers=[FileHandler(LOGFILE_FILE), StreamHandler()],
-)
 
 
 class App(BaseModel):
