@@ -15,7 +15,9 @@ SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://{}:{}@{}:{}/{}".format(
     settings.postgres.database,
 )
 
-engine = create_async_engine(SQLALCHEMY_DATABASE_URL, echo=settings.app.environment == "dev")
+engine = create_async_engine(
+    SQLALCHEMY_DATABASE_URL, echo=settings.app.environment == "dev", pool_recycle=1800
+)
 SessionLocal = sessionmaker(engine, class_=AsyncSession, expire_on_commit=False)
 Base = declarative_base()
 metadata = MetaData()
