@@ -13,7 +13,8 @@ class Galaxy(Base):
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String(50), nullable=False)
     universe_id = Column(
-        UUID(as_uuid=True), ForeignKey("universe.id", ondelete="CASCADE")
+        UUID(as_uuid=True),
+        ForeignKey("universe.id", ondelete="CASCADE"),
     )
     size = Column(Float, nullable=False)
     shape = Column(String(50))

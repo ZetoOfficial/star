@@ -11,7 +11,7 @@ class Constellation(Base):
     __tablename__ = "constellation"
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    galaxy_id = Column(UUID(as_uuid=True), ForeignKey("galaxy.id"))
+    galaxy_id = Column(UUID(as_uuid=True), ForeignKey("galaxy.id", ondelete="CASCADE"))
     name = Column(String(50), nullable=False)
     shape = Column(String(50))
     abbreviation = Column(String(50))

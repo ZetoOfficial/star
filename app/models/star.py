@@ -12,7 +12,7 @@ class Star(Base):
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(String(50), nullable=False)
-    galaxy_id = Column(UUID(as_uuid=True), ForeignKey("galaxy.id"))
+    galaxy_id = Column(UUID(as_uuid=True), ForeignKey("galaxy.id", ondelete="CASCADE"))
     spectral_type = Column(String(50), nullable=False)
     luminosity = Column(Float, nullable=False)
     distance_from_earth = Column(Float, nullable=False)
