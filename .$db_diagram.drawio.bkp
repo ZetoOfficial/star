@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-03-14T12:28:03.612Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36" etag="sv3pp-9ahsMx74RQE7jQ" version="21.0.6" type="github">
+<mxfile host="Electron" modified="2023-11-21T18:03:37.864Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="5HPycawHC53Agp9fdF1V" version="21.2.8" type="device">
   <diagram name="Страница 1" id="Bg6F_eg1BQB0qyp61wwv">
-    <mxGraphModel dx="1536" dy="838" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="1430" dy="837" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -154,7 +154,7 @@
         <mxCell id="Cm3p-tlsvX1pS4Pbubea-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;startArrow=ERmany;startFill=0;" parent="1" source="Cm3p-tlsvX1pS4Pbubea-33" target="k5xjA4PLT7-g8IIi1C31-50" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="tnMPqwuQIZwk0o-1yE6A-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;startArrow=ERmany;startFill=0;" edge="1" parent="1" source="k5xjA4PLT7-g8IIi1C31-43" target="k5xjA4PLT7-g8IIi1C31-25">
+        <mxCell id="tnMPqwuQIZwk0o-1yE6A-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;startArrow=ERmany;startFill=0;" parent="1" source="k5xjA4PLT7-g8IIi1C31-43" target="k5xjA4PLT7-g8IIi1C31-25" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>

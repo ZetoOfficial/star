@@ -4,3 +4,4 @@ from .planet import CRUDPlanet
 from .star import CRUDStar
 from .star_constellation import CRUDStarConstellation
 from .universe import CRUDUniverse
+from .reports import ReportRepository

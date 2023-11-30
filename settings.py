@@ -13,6 +13,7 @@ class App(BaseModel):
     endpoint: str
     environment: str
     origins: list[str]
+    static_dir: str = "static"
 
 
 class Postgres(BaseModel):

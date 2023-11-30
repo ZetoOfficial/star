@@ -1,5 +1,4 @@
 from pydantic import BaseModel, UUID4
-from .galaxy_dto import GalaxyDTO
 
 
 class GalaxyShortDTO(BaseModel):
