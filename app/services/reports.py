@@ -16,16 +16,25 @@ def get_public_url(file_path: str) -> str:
     return f"/{file_path}"
 
 
+def to_dict(obj):
+    if hasattr(obj, "__dict__"):
+        return vars(obj)
+    else:
+        return {
+            attr: getattr(obj, attr) for attr in dir(obj) if not attr.startswith("_")
+        }
+
+
 class ReportsService:
     @staticmethod
     async def get_excel_data(universe_id: UUID):
         report_data = await ReportRepository.get_report_data(universe_id)
 
-        universe_data = pd.DataFrame([vars(report_data["universe"])])
+        universe_data = pd.DataFrame([to_dict(report_data["universe"])])
         galaxies_data = pd.DataFrame(
-            [vars(galaxy) for galaxy in report_data["galaxies"]]
+            [to_dict(galaxy) for galaxy in report_data["galaxies"]]
         )
-        stars_data = pd.DataFrame([vars(star) for star in report_data["stars"]])
+        stars_data = pd.DataFrame([to_dict(star) for star in report_data["stars"]])
 
         universe_name = report_data["universe"].name
         report_name = f"{settings_.app.static_dir}/report_{universe_name}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
@@ -45,18 +54,18 @@ class ReportsService:
 
         universe = report_data["universe"]
         document.add_heading("Universe", level=1)
-        for attr, value in vars(universe).items():
+        for attr, value in to_dict(universe).items():
             document.add_paragraph(f"{attr}: {value}")
 
         document.add_heading("Galaxies", level=1)
         for galaxy in report_data["galaxies"]:
-            for attr, value in vars(galaxy).items():
+            for attr, value in to_dict(galaxy).items():
                 document.add_paragraph(f"{attr}: {value}")
             document.add_paragraph()
 
         document.add_heading("Stars", level=1)
         for star in report_data["stars"]:
-            for attr, value in vars(star).items():
+            for attr, value in to_dict(star).items():
                 document.add_paragraph(f"{attr}: {value}")
             document.add_paragraph()
 
