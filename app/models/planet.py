@@ -15,7 +15,6 @@ class Planet(Base):
     mass = Column(Float, nullable=False)
     diameter = Column(Float, nullable=False)
     distance_from_star = Column(Float, nullable=False)
-    orbital_period = Column(Time)
     surface_temperature = Column(Float)
     star_id = Column(UUID(as_uuid=True), ForeignKey("star.id", ondelete="CASCADE"))
 
