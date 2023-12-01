@@ -6,7 +6,7 @@ from app.services import ReportsService
 report_router = APIRouter()
 
 
-@report_router.post("/reports/excel", response_model=ReportDTO)
+@report_router.get("/reports/excel", response_model=ReportDTO)
 async def create_excel_report(universe_id: UUID):
     """Create a new Excel report"""
     try:
@@ -15,7 +15,7 @@ async def create_excel_report(universe_id: UUID):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@report_router.post("/reports/word", response_model=ReportDTO)
+@report_router.get("/reports/word", response_model=ReportDTO)
 async def create_word_report(universe_id: UUID):
     """Create a new Word report"""
     try:
