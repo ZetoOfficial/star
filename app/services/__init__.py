@@ -1,3 +1,4 @@
+from .audit import AuditService
 from .constellation import ConstellationService
 from .galaxy import GalaxyService
 from .planet import PlanetService

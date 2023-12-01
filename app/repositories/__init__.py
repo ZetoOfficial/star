@@ -1,3 +1,4 @@
+from .audit import CRUDAudit
 from .constellation import CRUDConstellation
 from .galaxy import CRUDGalaxy
 from .planet import CRUDPlanet
