@@ -69,8 +69,7 @@ class ReportsService:
                 document.add_paragraph(f"{attr}: {value}")
             document.add_paragraph()
 
-        report_name = (
-            f"report_{universe_id}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.docx"
-        )
+        universe_name = report_data["universe"].name
+        report_name = f"{settings_.app.static_dir}/report_{universe_name}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.docx"
         document.save(report_name)
         return ReportDTO(name=report_name, link=get_public_url(report_name))

@@ -1,5 +1,7 @@
-from pydantic import BaseModel, UUID4
 from typing import Optional
+
+from pydantic import BaseModel, UUID4
+
 from .universe_dto import UniverseDTO
 
 

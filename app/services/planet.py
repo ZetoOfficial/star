@@ -1,4 +1,5 @@
 from uuid import UUID
+
 from app.repositories.planet import CRUDPlanet
 from app.schemas import PlanetDTO, InputPlanetDTO
 

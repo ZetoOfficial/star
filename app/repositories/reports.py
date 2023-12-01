@@ -1,18 +1,15 @@
 from uuid import UUID
 
-from sqlalchemy import delete, select, update
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
 from app.database import SessionLocal
 from app.models import (
-    Planet as ORMPlanet,
     Star as ORMStar,
     Universe as ORMUniverse,
     Galaxy as ORMGalaxy,
 )
-from app.schemas import PlanetDTO, InputPlanetDTO
-from .errors import NotFoundException
 
 
 class ReportRepository:
@@ -24,6 +21,8 @@ class ReportRepository:
             universe_query = select(ORMUniverse).where(ORMUniverse.id == universe_id)
             universe_result = await session.execute(universe_query)
             universe = universe_result.scalars().first()
+            if universe is None:
+                raise Exception("Universe not found")
 
             galaxy_query = select(ORMGalaxy).where(ORMGalaxy.universe_id == universe_id)
             galaxy_result = await session.execute(galaxy_query)
