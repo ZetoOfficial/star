@@ -33,8 +33,8 @@ def format_report_data(report_data):
         ["Название галактики", galaxy.name],
         ["Тип галактики", galaxy.shape],
         ["Размер галактики", f"{galaxy.size} млн. км"],
-        ["Основные звезды", ",".join(stars) if stars else "Звезды не найдены"],
-        ["Известные планеты", ",".join(planets) if planets else "Планеты не найдены"],
+        ["Основные звезды", ", ".join(stars) if stars else "Звезды не найдены"],
+        ["Известные планеты", ", ".join(planets) if planets else "Планеты не найдены"],
         ["Состав", galaxy.composition],
     ]
 
@@ -43,12 +43,14 @@ class ReportsService:
     @staticmethod
     async def get_report_data(galaxy_id: UUID):
         report_data = await ReportRepository.get_report_data(galaxy_id)
+        stars = [star.name for star in report_data["stars"]]
+        planets = [planet.name for planet in report_data["planets"]]
         return GalaxyReportDTO(
             name=report_data["galaxy"].name,
             shape=report_data["galaxy"].shape,
             size=report_data["galaxy"].size,
-            stars=[star.name for star in report_data["stars"]],
-            planets=[planet.name for planet in report_data["planets"]],
+            stars=", ".join(stars) if stars else "Звезды не найдены",
+            planets=", ".join(planets) if planets else "Планеты не найдены",
             composition=report_data["galaxy"].composition,
         )
 

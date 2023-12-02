@@ -10,6 +10,6 @@ class GalaxyReportDTO(BaseModel):
     name: str
     shape: str
     size: float
-    stars: list[str]
-    planets: list[str]
+    stars: str
+    planets: str
     composition: str
