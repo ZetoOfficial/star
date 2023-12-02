@@ -1,7 +1,9 @@
+from uuid import UUID
+
 from fastapi import APIRouter, HTTPException
+
 from app.schemas import ConstellationDTO, InputConstellationDTO
 from app.services import ConstellationService
-from uuid import UUID
 
 constellation_router = APIRouter()
 

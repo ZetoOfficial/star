@@ -1,7 +1,9 @@
+from uuid import UUID
+
 from fastapi import APIRouter, HTTPException
+
 from app.schemas import StarDTO, InputStarDTO
 from app.services import StarService
-from uuid import UUID
 
 star_router = APIRouter()
 

@@ -1,9 +1,10 @@
+from uuid import UUID
+
 from fastapi import APIRouter, HTTPException
 
 from app.repositories.errors import NotFoundException
 from app.schemas import PlanetDTO, InputPlanetDTO
 from app.services import PlanetService
-from uuid import UUID
 
 planet_router = APIRouter()
 

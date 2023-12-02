@@ -8,7 +8,6 @@ from app.database import SessionLocal
 from app.models import (
     Star as ORMStar,
     Galaxy as ORMGalaxy,
-    Planet as ORMPlanet,
 )
 
 
@@ -25,7 +24,10 @@ class ReportRepository:
                 raise Exception("Galaxy not found")
 
             star_query = (
-                select(ORMStar).join(ORMGalaxy).options(selectinload(ORMStar.planet))
+                select(ORMStar)
+                .join(ORMGalaxy)
+                .where(ORMGalaxy.id == galaxy_id)
+                .options(selectinload(ORMStar.planet))
             )
             star_result = await session.execute(star_query)
             stars = star_result.scalars().all()

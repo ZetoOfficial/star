@@ -1,7 +1,9 @@
+from uuid import UUID
+
 from fastapi import APIRouter, HTTPException
+
 from app.schemas import GalaxyDTO, InputGalaxyDTO
 from app.services import GalaxyService
-from uuid import UUID
 
 galaxy_router = APIRouter()
 

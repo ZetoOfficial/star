@@ -10,7 +10,9 @@ class GalaxyService:
         return await CRUDGalaxy.create_galaxy(dto)
 
     @staticmethod
-    async def get_all_galaxies(limit: int = None, offset: int = None) -> list[GalaxyDTO]:
+    async def get_all_galaxies(
+        limit: int = None, offset: int = None
+    ) -> list[GalaxyDTO]:
         return await CRUDGalaxy.get_all_galaxies(limit, offset)
 
     @staticmethod

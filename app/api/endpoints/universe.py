@@ -1,7 +1,9 @@
+from uuid import UUID
+
 from fastapi import APIRouter, HTTPException
+
 from app.schemas import UniverseDTO, InputUniverseDTO
 from app.services import UniverseService
-from uuid import UUID
 
 universe_router = APIRouter()
 
