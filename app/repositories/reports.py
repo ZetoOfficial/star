@@ -30,10 +30,15 @@ class ReportRepository:
             star_result = await session.execute(star_query)
             stars = star_result.scalars().all()
 
+            plantes = []
+            for star in stars:
+                if star.planet:
+                    plantes += star.planet
+
             report_data = {
                 "galaxy": galaxy,
                 "stars": stars,
-                "planets": [star.planet for star in stars],
+                "planets": plantes,
             }
 
             return report_data

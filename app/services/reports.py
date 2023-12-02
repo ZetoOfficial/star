@@ -7,7 +7,7 @@ from openpyxl.styles import Font, Border, Side
 from openpyxl.utils import get_column_letter
 
 from app.repositories import ReportRepository
-from app.schemas import ReportDTO, GalaxyReportDTO, GalaxyDTO
+from app.schemas import ReportDTO, GalaxyReportDTO
 from settings import load_settings
 
 sttngs = load_settings()
